@@ -9,7 +9,7 @@
 namespace App\Pagination;
 
 use App\Pagination\Meta;
-
+use App\Pagination\Renderers\PlainRenderer;
 
 class Results
 {
