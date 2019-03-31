@@ -29,14 +29,9 @@ $builder = new Builder($queryBuilder);
 
 $users = $builder->paginate( $_GET['page'] ?: 1, 10);
 
-
-//for examp;e view
 foreach ($users->get() as $user) {
     echo $user['id'] . ': ' . $user['first_name'] . '<br>';
 }
-
-
-//echo $users->render();
 
 echo $users->render([
     'order' => $_GET['order'],
