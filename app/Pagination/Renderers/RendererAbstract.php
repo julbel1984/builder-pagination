@@ -9,6 +9,7 @@
 namespace App\Pagination\Renderers;
 
 use App\Pagination\Meta;
+use App\Pagination\PageIterator;
 
 abstract class RendererAbstract
 {
@@ -44,7 +45,10 @@ abstract class RendererAbstract
         array_unshift($range, 1);
         $range[] = $this->meta->lastPage;
 
-        return array_unique($range);
+        return new PageIterator(
+            array_unique($range),
+            $this->meta
+        );
     }
 
     abstract public function render();
