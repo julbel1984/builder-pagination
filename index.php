@@ -25,12 +25,20 @@ $connection = DriverManager::getConnection([
 $queryBuilder = $connection->createQueryBuilder();
 $queryBuilder->select('*')->from('users');
 
-//dump($queryBuilder->execute()->fetchAll());
-
 $builder = new Builder($queryBuilder);
 
 $users = $builder->paginate( $_GET['page'] ?: 1, 10);
 
-//dump($users->get());
 
-echo $users->render();
+//for examp;e view
+foreach ($users->get() as $user) {
+    echo $user['id'] . ': ' . $user['first_name'] . '<br>';
+}
+
+
+//echo $users->render();
+
+echo $users->render([
+    'order' => $_GET['order'],
+    'abc' => $_GET['abc'],
+]);
